@@ -1,6 +1,8 @@
 package plugin
 
 import (
+	"context"
+
 	"github.com/yoheimuta/protolint/internal/addon/plugin/shared"
 	"github.com/yoheimuta/protolint/linter/rule"
 
@@ -12,6 +14,7 @@ func RegisterCustomRules(
 	rules ...rule.Rule,
 ) {
 	plugin.Serve(
+		context.Background(),
 		&plugin.ServeConfig{
 			HandshakeConfig: shared.Handshake,
 			Plugins: map[string]plugin.Plugin{

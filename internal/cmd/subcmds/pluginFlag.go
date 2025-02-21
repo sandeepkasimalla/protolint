@@ -1,6 +1,7 @@
 package subcmds
 
 import (
+	"context"
 	"fmt"
 	"os/exec"
 	"strings"
@@ -53,7 +54,7 @@ func (f *PluginFlag) BuildPlugins(verbose bool) ([]shared.RuleSet, error) {
 			Managed: true,
 		})
 
-		rpcClient, err := client.Client()
+		rpcClient, err := client.Client(context.Background())
 		if err != nil {
 			return nil, fmt.Errorf("failed client.Client(), err=%s", err)
 		}
